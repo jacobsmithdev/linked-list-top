@@ -17,6 +17,18 @@ export default class LinkedList {
         return current;
     }
 
+    get size() {
+        let sum = 0;
+
+        let current = this.head;
+        while (current !== null) {
+            current = current.next;
+            sum++;
+        }
+
+        return sum;
+    }
+
     append(value) {
         const node = new Node(value);
 
