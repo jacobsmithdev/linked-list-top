@@ -110,6 +110,28 @@ export default class LinkedList {
         return -1;
     }
 
+    insertAt(value, index) {
+        if (index === 0) {
+            this.prepend(value);
+            return;
+        }
+
+        let current = this.head;
+        let currentIndex = 0;
+
+        // Traverse list to node right before target index
+        while (currentIndex < index - 1 && current.next !== null) {
+            currentIndex++;
+            current = current.next;
+        }
+
+        const nextNode = current.next;
+        const prevNode = current;
+
+        const newNode = new Node(value, nextNode);
+        prevNode.next = newNode;
+    }
+
     toString() {
         let string = '';
         let current = this.head;
