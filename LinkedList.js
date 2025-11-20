@@ -73,6 +73,19 @@ export default class LinkedList {
         return tail;
     }
 
+    at(targetIndex) {
+        let currentIndex = 0;
+        let current = this.head;
+
+        while (current !== null) {
+            if (currentIndex === targetIndex) return current.value;
+            currentIndex++;
+            current = current.next;
+        }
+
+        return null;
+    }
+
     toString() {
         let string = '';
         let current = this.head;
