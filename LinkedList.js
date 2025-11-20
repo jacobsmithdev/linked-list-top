@@ -132,6 +132,31 @@ export default class LinkedList {
         prevNode.next = newNode;
     }
 
+    removeAt(index) {
+        if (index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+
+        if (index > this.size - 1) {
+            this.pop();
+            return;
+        }
+
+        let current = this.head;
+        let currentIndex = 0;
+
+        // Traverse list to node right before target index
+        while (currentIndex < index - 1 && current.next !== null) {
+            currentIndex++;
+            current = current.next;
+        }
+
+        const isEndOfList = current.next === null;
+        // If there are nodes after the one just removed, stitch them back together
+        if (!isEndOfList) current.next = current.next.next;
+    }
+
     toString() {
         let string = '';
         let current = this.head;
