@@ -1,15 +1,14 @@
 import Node from './Node.js';
 
 export default class LinkedList {
-    constructor(startValue = new Node()) {
-        this.head =
-            startValue instanceof Node
-                ? startValue
-                : new Node(startValue, null);
+    constructor(startValue) {
+        this.head = startValue instanceof Node ? startValue : null;
     }
 
     get tail() {
         let current = this.head;
+        if (current === null) return current;
+
         while (current.next !== null) {
             current = current.next;
         }
